@@ -9,12 +9,18 @@ let isActivated = false;
 async function activate(context) {
   // Should only run once
   if (!isActivated) {
+    // Retrieve the array
+    let achList = context.globalState.get("achivements") || [];
+
+    function updateAchList(input) {
+      achList.push(input);
+      context.globalState.update("achivements", achList);
+    }
+
     console.log("Achievements is now active!");
     const achivements = await loadAchievements();
 
-    achivements.forEach(ach => {
-      ach.event(ach.run);
-    });
+    for (const ach of achivements) ach(achList, updateAchList);
 
     isActivated = true;
   }

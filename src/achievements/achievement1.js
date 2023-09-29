@@ -1,13 +1,21 @@
 const vscode = require("vscode");
 
-module.exports = {
-  name: "opened first file",
-  event: vscode.workspace.onDidOpenTextDocument,
-  /**
-   *
-   * @param {vscode.TextDocument} document
-   */
-  run: async document => {
-    console.log(document.fileName);
-  },
+const name = "write1000LinesIn1Hour";
+
+module.exports = async (achList, updateAchList) => {
+  if (achList.includes(name)) return;
+
+  let counter = 0;
+  const dispoable = vscode.workspace.onDidChangeTextDocument(event => {
+    event.contentChanges.forEach(change => {
+      if (change.text.includes("\n")) {
+        counter++;
+      }
+      if (counter == 10) {
+        vscode.window.showInformationMessage("You reached 1000 lines");
+        updateAchList(name);
+        dispoable.dispose();
+      }
+    });
+  });
 };
