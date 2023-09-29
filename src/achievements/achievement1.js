@@ -8,6 +8,6 @@ module.exports = {
    * @param {vscode.TextDocument} document
    */
   run: async document => {
-    console.log(document.languageId);
+    console.log(document.fileName);
   },
 };
