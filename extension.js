@@ -1,6 +1,9 @@
 const vscode = require("vscode");
 const loadAchievements = require("./src/functions/loadAchievements");
 const getWebView = require("./src/functions/getWebView");
+const { EventEmitter } = require("stream");
+
+const eventEmitter = new EventEmitter();
 
 let isActivated = false;
 
@@ -12,7 +15,7 @@ async function activate(context) {
   if (!isActivated) {
     // Retrieve the array
     context.globalState.update("achivements", []);
-    let achList = context.globalState.get("achivements") || [];
+    let achList = context.globalState.get("achivements", []);
 
     // Loading the webview of details under the activity bar
     vscode.window.registerWebviewViewProvider("details", {
@@ -20,12 +23,17 @@ async function activate(context) {
         webviewView.webview.options = {
           enableScripts: true,
         };
-        webviewView.webview.html = getWebView();
+        webviewView.webview.html = getWebView(achList);
+
+        eventEmitter.on("achListUpdate", () => {
+          webviewView.webview.html = getWebView(achList);
+        });
       },
     });
 
     function updateAchList(input) {
       achList.push(input);
+      eventEmitter.emit("achListUpdate");
       context.globalState.update("achivements", achList);
     }
 

@@ -30,37 +30,7 @@ module.exports = function getWebView(achList) {
       </style>
   </head>
   <body>
-      <h3>Your Achievements 🏆</h3>
-      <ul class="achievement-list" id="achievementList">
-          <!-- List items will be dynamically added here -->
-      </ul>
-  
-      <script>
-  
-          // Get a reference to the ul element
-          const achievementList = document.getElementById("achievementList");
-  
-          // Loop through the achievements array and create li elements
-          achList.forEach((achievement) => {
-              const li = document.createElement("li");
-              li.className = "achievement-item";
-  
-              const achievementDetails = document.createElement("div");
-              achievementDetails.className = "achievement-details";
-  
-              const h4 = document.createElement("h4");
-              h4.textContent = achievement.title;
-  
-              const p = document.createElement("p");
-              p.textContent = achievement.details;
-  
-              achievementDetails.appendChild(h4);
-              achievementDetails.appendChild(p);
-  
-              li.appendChild(achievementDetails);
-              achievementList.appendChild(li);
-          });
-      </script>
+          ${achList.map(ach => `<div>${ach[1]}</div>`).join("")}
   </body>
   </html>`;
 };
