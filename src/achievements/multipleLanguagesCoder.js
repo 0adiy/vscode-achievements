@@ -15,7 +15,7 @@ function updateUniqueLanguages() {
   }
 }
 
-const name = "languageMaster";
+const name = "multipleLanguagesCoder";
 /**
  * 
  * @param {vscode.ExtensionContext} context 
