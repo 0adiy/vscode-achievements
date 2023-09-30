@@ -1,6 +1,6 @@
 const vscode = require("vscode");
 const loadAchievements = require("./src/functions/loadAchievements");
-const path = require("path");
+const getWebView = require("./src/functions/getWebView")
 
 let isActivated = false;
 
@@ -46,12 +46,10 @@ function createWebView() {
     }
   );
 
-  // Get the path to your HTML file
-  const onDiskPath = vscode.Uri.file("notifcations.html");
-  const htmlContent = onDiskPath.with({ scheme: "vscode-resource" });
 
   // Set the HTML content in the webview
-  panel.webview.html = `<iframe src="${htmlContent}" width="100%" height="100%"></iframe>`;
+  panel.webview.html = getWebView();
+  // panel.webview.html = `<iframe src="${getWebView()}" width="100%" height="100%"></iframe>`;
 }
 
 module.exports = {
