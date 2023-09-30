@@ -17,9 +17,9 @@ module.exports = async (context, achList, updateAchList) => {
         vscode.window.showInformationMessage(
           `🏆Achievement Unlocked🔓: ${title}`
         );
-        updateAchList([name, title]);
-        dispoable.dispose();
       }
+      updateAchList([name, title]);
+      dispoable.dispose();
     });
   });
 };

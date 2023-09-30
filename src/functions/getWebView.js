@@ -10,27 +10,20 @@ module.exports = function getWebView(achList) {
               font-family: Arial, sans-serif;
               padding: 20px;
           }
-  
-          h1 {
-              color: #ccb8b8;
-          }
-  
-          button {
-              padding: 10px 20px;
-              font-size: 14px;
-              border: none;
-              background-color: #007acc;
-              color: white;
-              cursor: pointer;
-          }
-  
-          button:hover {
-              background-color: #005f7d;
+          .achievement-item {
+            list-style-type: circle;
+            margin-top: 20px;
           }
       </style>
   </head>
   <body>
-          ${achList.map(ach => `<div>${ach[1]}</div>`).join("")}
+  <h3>Your Achievements🏆:</h3>
+  ${achList.map(achivementList).join('')}
   </body>
   </html>`;
 };
+
+const achivementList = (achievement) => 
+`<li class="achievement-item" >
+        ${achievement[1]}
+</li>`
