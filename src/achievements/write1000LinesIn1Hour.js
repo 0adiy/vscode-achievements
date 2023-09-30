@@ -2,7 +2,7 @@ const vscode = require("vscode");
 
 const name = "write1000LinesIn1Hour";
 
-module.exports = async (achList, updateAchList) => {
+module.exports = async (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
 
   let list = [];
@@ -11,7 +11,7 @@ module.exports = async (achList, updateAchList) => {
       if (change.text.includes("\n")) {
         list.push(Date.now());
       }
-      const offset = Date.now() -  6 * 1000;
+      const offset = Date.now() - 6 * 1000;
       list = list.filter(x => x > offset);
       if (list.length == 10) {
         vscode.window.showInformationMessage(

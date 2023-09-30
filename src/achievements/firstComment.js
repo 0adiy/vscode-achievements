@@ -2,10 +2,10 @@ const vscode = require("vscode");
 
 const name = "firstComment";
 
-module.exports = (achList, updateAchList) => {
+module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
 
-  const disposable = vscode.workspace.onDidChangeTextDocument((event) => {
+  const disposable = vscode.workspace.onDidChangeTextDocument(event => {
     const { document } = event;
     if (!document) return;
 
@@ -15,7 +15,9 @@ module.exports = (achList, updateAchList) => {
 
       // Check if the code contains comments
       if (containsComments(text, document.languageId)) {
-        vscode.window.showInformationMessage("🏆Achievement Unlocked🔓: Writing comments with code !!! nice📝");
+        vscode.window.showInformationMessage(
+          "🏆Achievement Unlocked🔓: Writing comments with code !!! nice📝"
+        );
         updateAchList(name);
         disposable.dispose();
       }
@@ -25,7 +27,18 @@ module.exports = (achList, updateAchList) => {
 
 function isCodeFile(languageId) {
   // Specify the supported file types by their language identifiers
-  const supportedLanguages = ["javascript", "typescript", "python", "java", "c", "cpp", "rust", "go", "html", "css"];
+  const supportedLanguages = [
+    "javascript",
+    "typescript",
+    "python",
+    "java",
+    "c",
+    "cpp",
+    "rust",
+    "go",
+    "html",
+    "css",
+  ];
   return supportedLanguages.includes(languageId);
 }
 

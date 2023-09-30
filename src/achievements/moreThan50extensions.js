@@ -2,7 +2,7 @@ const vscode = require("vscode");
 
 const name = "moreThan50extensions";
 
-module.exports = async (achList, updateAchList) => {
+module.exports = async (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
 
   const dispoable = vscode.workspace.onDidChangeWorkspaceFolders(event => {
