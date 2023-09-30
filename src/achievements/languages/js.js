@@ -1,5 +1,6 @@
 const vscode = require("vscode");
 const name = "js";
+const title = "Gonna make new Framework!😈";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -7,7 +8,7 @@ module.exports = (context, achList, updateAchList) => {
   const disposable = vscode.workspace.onDidOpenTextDocument(doc => {
     if (doc.languageId !== "javascript") return;
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: Gonna make new Framework!😈"
+      `🏆Achievement Unlocked🔓: ${title}`
     );
     updateAchList([name, title]);
     disposable.dispose();

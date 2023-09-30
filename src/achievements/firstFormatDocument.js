@@ -1,6 +1,6 @@
 const vscode = require("vscode");
-
 const name = "firstFormatDocument";
+const title = "You formatted the document for the first time!🦋";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -14,7 +14,7 @@ module.exports = (context, achList, updateAchList) => {
       if (!formatDocumentUsed) {
         // "Format Document" has not been used before this save.
         vscode.window.showInformationMessage(
-          "You formatted the document for the first time!"
+          `🏆Achievement Unlocked🔓: ${title}`
         );
         updateAchList([name, title]);
         formatDocumentUsed = true;

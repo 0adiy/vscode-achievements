@@ -1,5 +1,6 @@
 const vscode = require("vscode");
 const name = "IsUserSnippet";
+const title = "First User Snippet!";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -12,7 +13,7 @@ module.exports = (context, achList, updateAchList) => {
   if (snippetSuggestions) {
     // User snippets are disabled
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: First User Snippet!"
+      `🏆Achievement Unlocked🔓: ${title}`
     );
     updateAchList([name, title]);
     return;

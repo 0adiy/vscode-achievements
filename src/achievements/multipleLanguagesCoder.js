@@ -1,21 +1,7 @@
 const vscode = require("vscode");
-
-let uniqueLanguages = new Set();
-// TODO: Add universal storage
-function updateUniqueLanguages() {
-  uniqueLanguages.clear();
-  vscode.workspace.textDocuments.forEach(doc => {
-    uniqueLanguages.add(doc.languageId);
-  });
-
-  if (uniqueLanguages.size >= 10) {
-    vscode.window.showInformationMessage(
-      "Achievement Unlocked: Multilingual Master!"
-    );
-  }
-}
-
 const name = "multipleLanguagesCoder";
+const title = "Top 1% Coder📈";
+
 /**
  *
  * @param {vscode.ExtensionContext} context
@@ -33,7 +19,7 @@ module.exports = (context, achList, updateAchList) => {
     languageSet.add(languageId);
     if (languageSet.size > 2) {
       vscode.window.showInformationMessage(
-        "🏆Achievement Unlocked🔓: Top 1% Coder📈"
+        `🏆Achievement Unlocked🔓: ${title}`
       );
       updateAchList([name, title]);
       disposable.dispose();

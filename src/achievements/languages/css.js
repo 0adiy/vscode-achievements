@@ -1,5 +1,6 @@
 const vscode = require("vscode");
 const name = "css";
+const title = "   When in doubt, add more padding.   "; ;
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -7,7 +8,7 @@ module.exports = (context, achList, updateAchList) => {
   const disposable = vscode.workspace.onDidOpenTextDocument(doc => {
     if (doc.languageId !== "css") return;
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: When in doubt, add more padding."
+      `🏆Achievement Unlocked🔓: ${title}`
     );
     updateAchList([name, title]);
     disposable.dispose();

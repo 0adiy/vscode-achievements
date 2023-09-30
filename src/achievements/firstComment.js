@@ -1,6 +1,6 @@
 const vscode = require("vscode");
-
 const name = "firstComment";
+const title = "Writing comments with code !!! nice📝";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -16,7 +16,7 @@ module.exports = (context, achList, updateAchList) => {
       // Check if the code contains comments
       if (containsComments(text, document.languageId)) {
         vscode.window.showInformationMessage(
-          "🏆Achievement Unlocked🔓: Writing comments with code !!! nice📝"
+          `🏆Achievement Unlocked🔓: ${title}`
         );
         updateAchList([name, title]);
         disposable.dispose();

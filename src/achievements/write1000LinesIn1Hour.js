@@ -1,6 +1,6 @@
 const vscode = require("vscode");
-
 const name = "write1000LinesIn1Hour";
+const title = "You reached 1000 lines📝";
 
 module.exports = async (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
@@ -15,7 +15,7 @@ module.exports = async (context, achList, updateAchList) => {
       list = list.filter(x => x > offset);
       if (list.length == 10) {
         vscode.window.showInformationMessage(
-          "🏆Achievement Unlocked🔓: You reached 1000 lines📝"
+          `🏆Achievement Unlocked🔓: ${title}`
         );
         updateAchList([name, title]);
         dispoable.dispose();
