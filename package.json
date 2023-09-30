@@ -19,7 +19,18 @@
         "command": "achievements.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ], "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "achievements",
+          "title": "achievements",
+          "icon": {
+            "light": "./src/assets/medal.png",
+            "dark": "./src/assets/medal.png"
+          }
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
