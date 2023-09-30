@@ -18,30 +18,21 @@ async function activate(context) {
     const customIcon = vscode.Uri.file(
       context.asAbsolutePath("./src/assets/medal.png")
     );
-    
 
     // Create a custom title for your button
     const customTitle = "Achievements";
 
     // Create a command ID for your button
-    const commandId = "extension.achivements";
+    const commandId = "achievements.details";
 
-    // Register a command for your button
-    vscode.commands.registerCommand(commandId, () => {
-      vscode.window.showInformationMessage(
-        "🏆command activated"
-      );
-      createWebView();
-      // Create and add the button to the Activity Bar
-      const customButton = vscode.window.createStatusBarItem(
-        vscode.StatusBarAlignment.Left
-      );
-      customButton.text = customTitle;
-      customButton.tooltip = customTitle;
-      customButton.command = commandId;
-      // customButton.icon = customIcon;
-      // Show the button in the Activity Bar
-      customButton.show();
+    // Loading the webview of details under the activity bar
+    vscode.window.registerWebviewViewProvider("details", {
+      resolveWebviewView(webviewView, context, _token) {
+        webviewView.webview.options = {
+          enableScripts: true,
+        };
+        webviewView.webview.html = getWebView();
+      },
     });
 
     function updateAchList(input) {
@@ -54,8 +45,6 @@ async function activate(context) {
 
     for (const ach of achivements) ach(context, achList, updateAchList);
 
-    // Create a webview panel for the custom HTML
-
     isActivated = true;
   }
 }
@@ -63,21 +52,6 @@ async function activate(context) {
 // This method is called when your extension is deactivated
 function deactivate() {
   isActivated = false;
-}
-
-function createWebView() {
-  const panel = vscode.window.createWebviewPanel(
-    "customWebView", // Unique identifier
-    "Custom Web View", // Title displayed to the user
-    vscode.ViewColumn.One, // Editor column to show the webview in
-    {
-      enableScripts: true, // Enable JavaScript in the webview
-    }
-  );
-
-  // Set the HTML content in the webview
-  panel.webview.html = getWebView();
-  // panel.webview.html = `<iframe src="${getWebView()}" width="100%" height="100%"></iframe>`;
 }
 
 module.exports = {

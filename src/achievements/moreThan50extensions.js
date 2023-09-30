@@ -14,7 +14,7 @@ module.exports = async (context, achList, updateAchList) => {
       vscode.window.showInformationMessage(
         "🏆Achievement Unlocked🔓: Hoarder: You have more than 50 extensions loaded!📝"
       );
-      updateAchList(name);
+      updateAchList([name, title]);
       dispoable.dispose();
     }
   });

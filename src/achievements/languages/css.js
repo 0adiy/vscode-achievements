@@ -9,7 +9,7 @@ module.exports = (context, achList, updateAchList) => {
     vscode.window.showInformationMessage(
       "🏆Achievement Unlocked🔓: When in doubt, add more padding."
     );
-    updateAchList(name);
+    updateAchList([name, title]);
     disposable.dispose();
   });
 };

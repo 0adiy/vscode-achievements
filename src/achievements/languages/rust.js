@@ -9,7 +9,7 @@ module.exports = (context, achList, updateAchList) => {
     vscode.window.showInformationMessage(
       "🏆Achievement Unlocked🔓: In Rust, we trust. (Unless it's unsafe.)🦀"
     );
-    updateAchList(name);
+    updateAchList([name, title]);
     disposable.dispose();
   });
 };

@@ -1,6 +1,5 @@
-module.exports =
-	function getWebView() {
-		return `<html lang="en">
+module.exports = function getWebView(achList) {
+  return `<html lang="en">
 
             <head>
                 <meta charset="UTF-8" />
@@ -45,4 +44,4 @@ module.exports =
             </body>
 
         </html>`;
-	}
+};

@@ -9,7 +9,7 @@ module.exports = (context, achList, updateAchList) => {
       vscode.window.showInformationMessage(
         "🏆Achievement Unlocked🔓: Theme Chameleon!🦎"
       );
-      updateAchList(name);
+      updateAchList([name, title]);
       disposable.dispose();
     }
   });

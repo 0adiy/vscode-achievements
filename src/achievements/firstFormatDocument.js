@@ -16,7 +16,7 @@ module.exports = (context, achList, updateAchList) => {
         vscode.window.showInformationMessage(
           "You formatted the document for the first time!"
         );
-        updateAchList(name);
+        updateAchList([name, title]);
         formatDocumentUsed = true;
         disposable.dispose();
       }

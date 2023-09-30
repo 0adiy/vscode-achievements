@@ -9,7 +9,7 @@ module.exports = (context, achList, updateAchList) => {
     vscode.window.showInformationMessage(
       "🏆Achievement Unlocked🔓: Building the web, one <div> at a time."
     );
-    updateAchList(name);
+    updateAchList([name, title]);
     disposable.dispose();
   });
 };

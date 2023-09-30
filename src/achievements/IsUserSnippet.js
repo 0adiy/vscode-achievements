@@ -14,7 +14,7 @@ module.exports = (context, achList, updateAchList) => {
     vscode.window.showInformationMessage(
       "🏆Achievement Unlocked🔓: First User Snippet!"
     );
-    updateAchList(name);
+    updateAchList([name, title]);
     return;
   }
 };

@@ -18,7 +18,7 @@ module.exports = (context, achList, updateAchList) => {
         vscode.window.showInformationMessage(
           "🏆Achievement Unlocked🔓: Writing comments with code !!! nice📝"
         );
-        updateAchList(name);
+        updateAchList([name, title]);
         disposable.dispose();
       }
     }

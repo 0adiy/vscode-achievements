@@ -17,7 +17,7 @@ module.exports = async (context, achList, updateAchList) => {
         vscode.window.showInformationMessage(
           "🏆Achievement Unlocked🔓: You reached 1000 lines📝"
         );
-        updateAchList(name);
+        updateAchList([name, title]);
         dispoable.dispose();
       }
     });

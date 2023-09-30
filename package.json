@@ -14,20 +14,24 @@
   ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "achievements.helloWorld",
-        "title": "Hello World"
-      }
-    ], "viewsContainers": {
+    "viewsContainers": {
       "activitybar": [
         {
-          "id": "achievements",
-          "title": "achievements",
-          "icon": {
-            "light": "./src/assets/medal.png",
-            "dark": "./src/assets/medal.png"
-          }
+          "id": "achievementDetails",
+          "title": "Achievements",
+          "icon": "./src/assets/medal.png"
+        }
+      ]
+    },
+    
+    "views": {
+      "achievementDetails": [
+        {
+          "id": "details",
+          "name": "Details",
+          "icon": "./src/assets/medal.png",
+          "command": "achievements.details",
+          "type": "webview"
         }
       ]
     }
@@ -48,4 +52,3 @@
     "typescript": "^5.1.6"
   }
 }
-
