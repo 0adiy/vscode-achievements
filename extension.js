@@ -14,17 +14,6 @@ async function activate(context) {
     context.globalState.update("achivements", []);
     let achList = context.globalState.get("achivements") || [];
 
-    // Create a custom icon for your button (you can use SVG or PNG)
-    const customIcon = vscode.Uri.file(
-      context.asAbsolutePath("./src/assets/medal.png")
-    );
-
-    // Create a custom title for your button
-    const customTitle = "Achievements";
-
-    // Create a command ID for your button
-    const commandId = "achievements.details";
-
     // Loading the webview of details under the activity bar
     vscode.window.registerWebviewViewProvider("details", {
       resolveWebviewView(webviewView, context, _token) {
