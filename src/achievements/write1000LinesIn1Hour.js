@@ -11,7 +11,7 @@ module.exports = async (achList, updateAchList) => {
       if (change.text.includes("\n")) {
         counter++;
       }
-      if (counter == 10) {
+      if (counter == 1000) {
         vscode.window.showInformationMessage("You reached 1000 lines");
         updateAchList(name);
         dispoable.dispose();
