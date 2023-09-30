@@ -11,9 +11,9 @@ module.exports = async (achList, updateAchList) => {
       if (change.text.includes("\n")) {
         list.push(Date.now());
       }
-      const offset = Date.now() - 1 * 60 * 60 * 1000;
+      const offset = Date.now() -  6 * 1000;
       list = list.filter(x => x > offset);
-      if (list.length == 1000) {
+      if (list.length == 10) {
         vscode.window.showInformationMessage(
           "🏆Achievement Unlocked🔓: You reached 1000 lines📝"
         );
