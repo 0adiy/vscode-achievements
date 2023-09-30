@@ -5,7 +5,7 @@ module.exports = (achList, updateAchList) => {
   if (achList.includes(name)) return;
 
   const disposable = vscode.debug.onDidStartDebugSession(() => {
-    vscode.window.showInformationMessage("First Dive into Debugging!");
+    vscode.window.showInformationMessage("🏆Achievement Unlocked🔓: First Dive into Debugging!😉");
     updateAchList(name);
     disposable.dispose();
   });

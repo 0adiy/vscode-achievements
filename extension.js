@@ -10,6 +10,7 @@ async function activate(context) {
   // Should only run once
   if (!isActivated) {
     // Retrieve the array
+    context.globalState.update("achivements", []);
     let achList = context.globalState.get("achivements") || [];
 
     function updateAchList(input) {

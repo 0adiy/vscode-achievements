@@ -11,7 +11,7 @@ module.exports = (achList, updateAchList) => {
 
    if (snippetSuggestions) {
     // User snippets are disabled
-    vscode.window.showInformationMessage("First User Snippet!");
+    vscode.window.showInformationMessage("🏆Achievement Unlocked🔓: First User Snippet!");
     updateAchList(name);
     return;
    }
