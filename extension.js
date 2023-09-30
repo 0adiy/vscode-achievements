@@ -1,5 +1,7 @@
 const vscode = require("vscode");
 const loadAchievements = require("./src/functions/loadAchievements");
+const path = require('path');
+
 
 let isActivated = false;
 
@@ -23,6 +25,9 @@ async function activate(context) {
 
     for (const ach of achivements) ach(achList, updateAchList);
 
+    // Create a webview panel for the custom HTML
+    createWebView();
+
     isActivated = true;
   }
 }
@@ -30,6 +35,24 @@ async function activate(context) {
 // This method is called when your extension is deactivated
 function deactivate() {
   isActivated = false;
+}
+
+function createWebView() {
+  const panel = vscode.window.createWebviewPanel(
+    'customWebView', // Unique identifier
+    'Custom Web View', // Title displayed to the user
+    vscode.ViewColumn.One, // Editor column to show the webview in
+    {
+      enableScripts: true, // Enable JavaScript in the webview
+    }
+  );
+
+  // Get the path to your HTML file
+  const onDiskPath = vscode.Uri.file('notifcations.html');
+  const htmlContent = onDiskPath.with({ scheme: 'vscode-resource' });
+
+  // Set the HTML content in the webview
+  panel.webview.html = `<iframe src="${htmlContent}" width="100%" height="100%"></iframe>`;
 }
 
 module.exports = {
