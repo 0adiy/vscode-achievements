@@ -7,7 +7,7 @@ module.exports = (context, achList, updateAchList) => {
   const disposable = vscode.workspace.onDidOpenTextDocument(doc => {
     if (doc.languageId !== "cpp") return;
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: Writing in CPP 😱"
+      "🏆Achievement Unlocked🔓: The language that will make you question your life choices."
     );
     updateAchList(name);
     disposable.dispose();

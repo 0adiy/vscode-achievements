@@ -1,13 +1,13 @@
 const vscode = require("vscode");
-const name = "rust";
+const name = "css";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
 
   const disposable = vscode.workspace.onDidOpenTextDocument(doc => {
-    if (doc.languageId !== "rust") return;
+    if (doc.languageId !== "css") return;
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: In Rust, we trust. (Unless it's unsafe.)🦀"
+      "🏆Achievement Unlocked🔓: When in doubt, add more padding."
     );
     updateAchList(name);
     disposable.dispose();

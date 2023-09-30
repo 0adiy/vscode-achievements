@@ -1,13 +1,13 @@
 const vscode = require("vscode");
-const name = "python";
+const name = "java";
 
 module.exports = (context, achList, updateAchList) => {
   if (achList.includes(name)) return;
 
   const disposable = vscode.workspace.onDidOpenTextDocument(doc => {
-    if (doc.languageId !== "python") return;
+    if (doc.languageId !== "java") return;
     vscode.window.showInformationMessage(
-      "🏆Achievement Unlocked🔓: Writing in psedocode 🤓"
+      "🏆Achievement Unlocked🔓: Java, Where 'public static void' are more than just keywords.🍵"
     );
     updateAchList(name);
     disposable.dispose();
